@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+
+.dropdown:hover .dropdown-selected {
+  @apply mb-2;
+}
+
+.dropdown:hover .dropdown-selected:hover .dropdown-arrows {
+  @apply text-hightlight;
+}
+
+.dropdown:hover .dropdown-list {
+  @apply h-auto transition-all duration-300 ease-in-out;
+}
+
+.dropdown:hover .dropdown-list .dropdown-item {
+  @apply relative top-0 visible transition-all duration-200 delay-100 opacity-100;
+}
+
+.dropdown:hover .dropdown-list .dropdown-item:nth-child(2n) {
+  @apply duration-500 delay-100;
+}
