@@ -1,11 +1,27 @@
 "use client";
+import { useState } from "react";
 import styles from "./styles.module.css";
+import { motion } from "framer-motion";
 
 export default function DropdownUI8() {
+  const [isListOpen, setIsListOpen] = useState(false);
+
   return (
     <div className="flex items-center justify-center w-full min-h-screen font-semibold bg-primary font-inter">
-      <div
-        className={`${styles.dropdown} cursor-pointer space-y-2 rounded-[25px] bg-secondary p-1 text-3xl transition-all duration-1000 ease-in-out`}
+      <motion.div
+        onMouseEnter={() => {
+          setIsListOpen(true);
+        }}
+        onMouseLeave={() => {
+          setIsListOpen(false);
+        }}
+        initial={{ height: "auto" }}
+        whileHover={{ height: [100, 150, 180, 265, 310, 265] }}
+        transition={{
+          duration: 0.5,
+          ease: "easeInOut",
+        }}
+        className={`${styles.dropdown} cursor-pointer space-y-2 rounded-[25px] bg-secondary p-1 text-3xl`}
       >
         <div
           className={`${styles.dropdownSelected} m-1 flex h-fit items-center justify-around rounded-2xl bg-tertiary px-5 py-5 text-white shadow-inner shadow-[#2D3136]`}
@@ -41,7 +57,6 @@ export default function DropdownUI8() {
             </svg>
           </span>
         </div>
-
         <ul className={`space-y-2 ${styles.dropdownList}`}>
           <li
             className={`${styles.dropdownItem} px-8 py-5 m-1 text-white bg-shade rounded-2xl bg-opacity-10 text-opacity-30 hover:bg-opacity-70 hover:text-hightlight top-2`}
@@ -54,7 +69,7 @@ export default function DropdownUI8() {
             Template
           </li>
         </ul>
-      </div>
+      </motion.div>
     </div>
   );
 }
